@@ -36,7 +36,7 @@ mod StatusCodes {
 }
 
 // TODO: investigate core::unstable::Exclusive
-type ConnectMsg = (tcp::TcpNewConnection, core::unstable::Exclusive<core::comm::Chan<Option<tcp::TcpErrData>>>);
+type ConnectMsg = (tcp::TcpNewConnection, core::comm::SharedChan<core::option::Option<tcp::TcpErrData>>);
 
 fn print_usage(program: ~str) {
    fail!(fmt!("Usage: %s -p port -s pool_size -d web_dir", program));
